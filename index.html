@@ -1,144 +1,146 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Repositório de arquivos do projeto ABACUS Masterfile.">
-  <title>ABACUS Masterfile</title>
-  <style>
-    :root {
-      color-scheme: light;
-      --ink: #172033;
-      --muted: #5b6475;
-      --line: #e2e7ef;
-      --accent: #2457c5;
-      --background: #f5f7fb;
-      --card: #ffffff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--background);
-      color: var(--ink);
-      line-height: 1.6;
-    }
-    header {
-      padding: 56px 20px 42px;
-      background: #152746;
-      color: white;
-    }
-    .wrap { width: min(900px, calc(100% - 32px)); margin: 0 auto; }
-    .eyebrow {
-      margin: 0 0 10px;
-      color: #c8d8ff;
-      font-size: .85rem;
-      font-weight: 700;
-      letter-spacing: .09em;
-      text-transform: uppercase;
-    }
-    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
-    header p { max-width: 680px; color: #e0e8f7; margin: 18px 0 0; }
-    main { padding: 34px 0 54px; }
-    .intro { color: var(--muted); margin: 0 0 24px; }
-    .files { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .file {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 5px 18px rgba(25, 42, 70, .04);
-    }
-    .file h2 { font-size: 1.15rem; margin: 0 0 8px; overflow-wrap: anywhere; }
-    .file p { color: var(--muted); font-size: .95rem; min-height: 48px; }
-    .button {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 10px 15px;
-      border-radius: 8px;
-      background: var(--accent);
-      color: white;
-      text-decoration: none;
-      font-weight: 650;
-    }
-    .button:hover { background: #1946a6; }
-    .note {
-      margin-top: 24px;
-      padding: 16px 18px;
-      border-left: 4px solid #9aa9c3;
-      background: #edf1f8;
-      border-radius: 8px;
-      color: #38445a;
-      font-size: .93rem;
-    }
-    footer { padding: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; text-align: center; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Central de arquivos do projeto ABACUS Masterfile.">
+<title>ABACUS Masterfile</title>
+<style>
+  :root{--ink:#172033;--muted:#5b6475;--line:#e2e7ef;--bg:#f4f6fb;--card:#fff;--accent:#2457c5;--accent-d:#1946a6;
+        --dash:#2457c5;--dash-bg:#e8efff;--data:#b45309;--data-bg:#fff1dc;--other:#475569;--other-bg:#eaeef4}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+  header{background:linear-gradient(135deg,#0f1f3d 0%,#1d3a73 100%);color:#fff;padding:54px 20px 70px}
+  .wrap{width:min(1000px,calc(100% - 32px));margin:0 auto}
+  .eyebrow{margin:0 0 8px;color:#bcd0ff;font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+  h1{margin:0;font-size:clamp(2rem,5vw,3rem);line-height:1.1}
+  header p.sub{max-width:660px;color:#dbe6fb;margin:14px 0 0}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .chip{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:5px 14px;font-size:.85rem}
+  .chip b{font-size:1rem}
+  main{margin-top:-34px;padding-bottom:50px}
+  .bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;box-shadow:0 6px 22px rgba(20,35,65,.07)}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap}
+  .tab{border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:.88rem;cursor:pointer}
+  .tab[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+  .search{flex:1 1 220px;max-width:340px;padding:8px 12px;border:1px solid var(--line);border-radius:10px;font:inherit;background:var(--bg);color:var(--ink)}
+  .status{margin:12px 4px 0;color:var(--muted);font-size:.8rem}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:16px}
+  .card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 4px 16px rgba(25,42,70,.05);transition:transform .15s,box-shadow .15s}
+  .card:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(25,42,70,.12)}
+  .top{display:flex;gap:14px;align-items:flex-start}
+  .ico{flex:none;width:52px;height:52px;border-radius:14px;display:grid;place-items:center}
+  .ico svg{width:28px;height:28px}
+  .k-dash .ico{background:var(--dash-bg);color:var(--dash)}.k-data .ico{background:var(--data-bg);color:var(--data)}.k-other .ico{background:var(--other-bg);color:var(--other)}
+  .card h2{margin:0;font-size:1.05rem;line-height:1.3;overflow-wrap:anywhere}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 0}
+  .tag{font-size:.72rem;font-weight:700;border-radius:6px;padding:1px 8px;background:var(--other-bg);color:var(--other)}
+  .k-dash .tag.kind{background:var(--dash-bg);color:var(--dash)}.k-data .tag.kind{background:var(--data-bg);color:var(--data)}
+  .desc{color:var(--muted);font-size:.9rem;margin:12px 0 14px;flex:1}
+  .fname{font:.76rem ui-monospace,Consolas,monospace;color:#7a8499;overflow-wrap:anywhere;margin-bottom:14px}
+  .actions{display:flex;gap:8px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:7px;padding:9px 14px;border-radius:9px;font-weight:650;font-size:.9rem;text-decoration:none;border:1px solid var(--accent);color:#fff;background:var(--accent)}
+  .btn:hover{background:var(--accent-d)}
+  .btn.ghost{background:#fff;color:var(--accent)}.btn.ghost:hover{background:var(--dash-bg)}
+  .btn svg{width:16px;height:16px}
+  .empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:30px}
+  .note{margin-top:26px;padding:14px 18px;border-left:4px solid #9aa9c3;background:#edf1f8;border-radius:8px;color:#38445a;font-size:.9rem}
+  footer{padding:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;text-align:center}
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <p class="eyebrow">Projeto de pesquisa</p>
-      <h1>ABACUS Masterfile</h1>
-      <p>Central de acesso aos arquivos disponibilizados para o projeto. Selecione abaixo o material que deseja consultar.</p>
-    </div>
-  </header>
-  <main class="wrap">
-    <p class="intro">Arquivos disponíveis para visualização e download:</p>
-    <!-- Os cartões abaixo são gerados automaticamente a partir dos arquivos do repositório.
-         Se a lista automática não carregar, permanecem estes cartões fixos. -->
-    <section class="files" id="files" aria-label="Arquivos do projeto">
-      <article class="file">
-        <h2>dashboard_abacus.html</h2>
-        <p>Dashboard interativo de análise dos operadores (CUAD e BioDEX).</p>
-        <a class="button" href="./dashboard_abacus.html">Abrir dashboard</a>
-      </article>
-      <article class="file">
-        <h2>masterfile (6).tar.gz</h2>
-        <p>Arquivo compactado do Masterfile disponibilizado neste repositório.</p>
-        <a class="button" href="./masterfile%20(6).tar.gz" download>Baixar Masterfile</a>
-      </article>
-      <article class="file">
-        <h2>runs-campanha-maxcost.zip</h2>
-        <p>Arquivo compactado com os dados da campanha de runs.</p>
-        <a class="button" href="./runs-campanha-maxcost.zip" download>Baixar arquivo de runs</a>
-      </article>
-    </section>
-    <div class="note">
-      <strong>Observação:</strong> esta página e os arquivos vinculados ficam acessíveis publicamente. Compartilhe apenas materiais autorizados para divulgação.
-    </div>
-  </main>
-  <footer>ABACUS Masterfile</footer>
-  <script>
-    // Textos personalizados por arquivo (opcional). Arquivos novos recebem um texto genérico.
-    const INFO = {
-      'dashboard_abacus.html': { desc: 'Dashboard interativo de análise dos operadores (CUAD e BioDEX).', btn: 'Abrir dashboard' },
-      'masterfile (6).tar.gz': { desc: 'Arquivo compactado do Masterfile disponibilizado neste repositório.', btn: 'Baixar Masterfile' },
-      'runs-campanha-maxcost.zip': { desc: 'Arquivo compactado com os dados da campanha de runs.', btn: 'Baixar arquivo de runs' }
-    };
-    const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-    const fmt = b => b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
+<header><div class="wrap">
+  <p class="eyebrow">Projeto de pesquisa</p>
+  <h1>ABACUS Masterfile</h1>
+  <p class="sub">Central de acesso aos dashboards e aos arquivos de dados do projeto. Abra os dashboards direto no navegador ou baixe os arquivos compactados.</p>
+  <div class="chips" id="chips"></div>
+</div></header>
 
-    // Lista os arquivos da raiz do repositório via API pública do GitHub (apenas quando publicado em *.github.io).
-    async function carregarArquivos(host, path) {
-      const repo = path.split('/')[1];
-      if (!host.endsWith('github.io') || !repo) return;           // localmente: mantém os cartões fixos
-      try {
-        const r = await fetch(`https://api.github.com/repos/${host.split('.')[0]}/${repo}/contents/`);
-        if (!r.ok) throw new Error('HTTP ' + r.status);
-        const lista = (await r.json())
-          .filter(f => f.type === 'file' && f.name !== 'index.html' && !f.name.startsWith('.') && !/^readme/i.test(f.name))
-          .sort((a, b) => (/\.html?$/i.test(b.name) - /\.html?$/i.test(a.name)) || a.name.localeCompare(b.name));
-        if (!lista.length) return;
-        document.getElementById('files').innerHTML = lista.map(f => {
-          const web = /\.html?$/i.test(f.name), info = INFO[f.name] || {};
-          const desc = info.desc || ('Arquivo disponibilizado neste repositório (' + fmt(f.size) + ').');
-          const btn = info.btn || (web ? 'Abrir página' : 'Baixar arquivo');
-          return `<article class="file"><h2>${esc(f.name)}</h2><p>${esc(desc)}</p>` +
-                 `<a class="button" href="./${encodeURIComponent(f.name)}"${web ? '' : ' download'}>${esc(btn)}</a></article>`;
-        }).join('');
-      } catch (e) { console.warn('Lista automática indisponível:', e.message); }
-    }
-    carregarArquivos(location.hostname, location.pathname);
-  </script>
+<main class="wrap">
+  <div class="bar">
+    <div class="tabs" role="group" aria-label="Filtrar por tipo">
+      <button class="tab" data-f="all" aria-pressed="true">Todos</button>
+      <button class="tab" data-f="dash" aria-pressed="false">Dashboards</button>
+      <button class="tab" data-f="data" aria-pressed="false">Dados (.zip / .tar.gz)</button>
+    </div>
+    <input class="search" id="q" type="search" placeholder="Buscar arquivo…" aria-label="Buscar arquivo">
+  </div>
+  <div class="status" id="status">Carregando lista de arquivos…</div>
+  <section class="grid" id="grid" aria-label="Arquivos do projeto"></section>
+  <div class="note"><strong>Observação:</strong> esta página e os arquivos vinculados ficam acessíveis publicamente. Compartilhe apenas materiais autorizados para divulgação.</div>
+</main>
+<footer>ABACUS Masterfile</footer>
+
+<script>
+/* ---------- Lista de reserva (usada se a lista automática do GitHub não carregar) ---------- */
+const RESERVA = [
+  {name:'dashboard_operadores_sem_retrieve (1).html'},
+  {name:'operadores_cuad_biodex (2).html'},
+  {name:'masterfile (4).tar.gz'},{name:'masterfile (5).tar.gz'},{name:'masterfile (6).tar.gz'},
+  {name:'runs-campanha-maxcost.zip'}
+];
+let ARQUIVOS = RESERVA.slice(), filtro = 'all';
+
+/* ---------- Títulos e descrições (por padrão de nome; arquivos novos recebem texto genérico) ---------- */
+const REGRAS = [
+  {re:/^dashboard_operadores/i, titulo:()=> 'Dashboard de operadores', desc:'Dashboard interativo com rankings, gráficos e metodologia da análise dos operadores (CUAD e BioDEX).'},
+  {re:/^operadores_cuad_biodex/i, titulo:()=> 'Gráfico único dos operadores', desc:'Um único gráfico interativo com todos os operadores físicos de CUAD e BioDEX.'},
+  {re:/^masterfile/i, titulo:n=>{const v=n.match(/\((\d+)\)/);return 'Masterfile'+(v?' · versão '+v[1]:'')}, desc:'Arquivo compactado do Masterfile do projeto.'},
+  {re:/^runs-/i, titulo:()=> 'Runs da campanha', desc:'Dados das runs selecionadas da campanha (CUAD e BioDEX).'}
+];
+const ehWeb = n => /\.html?$/i.test(n);
+const ehDado = n => /\.(zip|tar\.gz|tgz|gz|7z|rar|csv|json|parquet)$/i.test(n);
+const tipoDe = n => ehWeb(n) ? 'dash' : ehDado(n) ? 'data' : 'other';
+const extDe = n => (n.match(/\.(tar\.gz|[a-z0-9]+)$/i)||['',''])[1].toLowerCase();
+const fmt = b => b==null ? '' : b>=1048576 ? (b/1048576).toFixed(1)+' MB' : Math.max(1,Math.round(b/1024))+' KB';
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ICON = {
+  dash:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+  data:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5 9 5 9-5z"/><path d="M3 8v8l9 5 9-5V8M12 13v8"/></svg>',
+  other:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg>',
+  open:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>',
+  down:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>'
+};
+function cartao(f){
+  const k = tipoDe(f.name), r = REGRAS.find(x=>x.re.test(f.name));
+  const titulo = r ? r.titulo(f.name) : f.name.replace(/\.[^.]+$/,'');
+  const desc = r ? r.desc : (k==='dash' ? 'Página interativa disponibilizada neste repositório.' : 'Arquivo disponibilizado neste repositório.');
+  const href = './' + encodeURIComponent(f.name);
+  const kind = k==='dash' ? 'Dashboard' : k==='data' ? 'Dados' : 'Arquivo';
+  const botoes = k==='dash'
+    ? `<a class="btn" href="${href}" target="_blank" rel="noopener">${ICON.open}Abrir dashboard</a><a class="btn ghost" href="${href}" download="${esc(f.name)}">${ICON.down}Baixar</a>`
+    : `<a class="btn" href="${href}" download="${esc(f.name)}">${ICON.down}Baixar${f.size?' ('+fmt(f.size)+')':''}</a>`;
+  return `<article class="card k-${k}"><div class="top"><div class="ico">${ICON[k]}</div><div><h2>${esc(titulo)}</h2>
+    <div class="meta"><span class="tag kind">${kind}</span><span class="tag">.${esc(extDe(f.name))}</span>${f.size?`<span class="tag">${fmt(f.size)}</span>`:''}</div></div></div>
+    <p class="desc">${esc(desc)}</p><div class="fname">${esc(f.name)}</div><div class="actions">${botoes}</div></article>`;
+}
+function ordenar(a,b){const o={dash:0,data:1,other:2};return (o[tipoDe(a.name)]-o[tipoDe(b.name)])||a.name.localeCompare(b.name,'pt',{numeric:true})}
+function desenhar(){
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  const todos = [...ARQUIVOS].sort(ordenar);
+  const vis = todos.filter(f=>(filtro==='all'||tipoDe(f.name)===filtro)&&f.name.toLowerCase().includes(q));
+  document.getElementById('grid').innerHTML = vis.length ? vis.map(cartao).join('') : '<div class="empty">Nenhum arquivo encontrado.</div>';
+  const n = t=>todos.filter(f=>tipoDe(f.name)===t).length;
+  document.getElementById('chips').innerHTML = `<span class="chip"><b>${todos.length}</b> arquivos</span><span class="chip"><b>${n('dash')}</b> dashboards</span><span class="chip"><b>${n('data')}</b> arquivos de dados</span>`;
+}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{filtro=b.dataset.f;document.querySelectorAll('.tab').forEach(x=>x.setAttribute('aria-pressed',x===b));desenhar()}));
+document.getElementById('q').addEventListener('input',desenhar);
+
+/* ---------- Lista automática via API pública do GitHub (só quando publicado em *.github.io/<repo>/) ---------- */
+async function carregarArquivos(host, path){
+  const st = document.getElementById('status'), repo = path.split('/')[1];
+  if(!host.endsWith('github.io') || !repo){ st.textContent='Lista automática inativa (só funciona no GitHub Pages): mostrando a lista de reserva.'; return; }
+  try{
+    const r = await fetch(`https://api.github.com/repos/${host.split('.')[0]}/${repo}/contents/?t=${Date.now()}`,{cache:'no-store'});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    const lista = (await r.json()).filter(f=>f.type==='file'&&f.name!=='index.html'&&!f.name.startsWith('.')&&!/^readme/i.test(f.name)).map(f=>({name:f.name,size:f.size}));
+    if(!lista.length){ st.textContent='Nenhum arquivo adicional encontrado no repositório.'; return; }
+    ARQUIVOS = lista; desenhar();
+    st.textContent = `Lista automática: ${lista.length} arquivo(s) encontrado(s) no repositório.`;
+  }catch(e){ st.textContent=`Lista automática falhou (${e.message}). Mostrando a lista de reserva: arquivos novos não aparecem.`; }
+}
+desenhar();
+carregarArquivos(location.hostname, location.pathname);
+</script>
 </body>
 </html>
