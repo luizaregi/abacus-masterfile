@@ -84,7 +84,14 @@
   </header>
   <main class="wrap">
     <p class="intro">Arquivos disponíveis para visualização e download:</p>
-    <section class="files" aria-label="Arquivos do projeto">
+    <!-- Os cartões abaixo são gerados automaticamente a partir dos arquivos do repositório.
+         Se a lista automática não carregar, permanecem estes cartões fixos. -->
+    <section class="files" id="files" aria-label="Arquivos do projeto">
+      <article class="file">
+        <h2>dashboard_abacus.html</h2>
+        <p>Dashboard interativo de análise dos operadores (CUAD e BioDEX).</p>
+        <a class="button" href="./dashboard_abacus.html">Abrir dashboard</a>
+      </article>
       <article class="file">
         <h2>masterfile (6).tar.gz</h2>
         <p>Arquivo compactado do Masterfile disponibilizado neste repositório.</p>
@@ -101,5 +108,37 @@
     </div>
   </main>
   <footer>ABACUS Masterfile</footer>
+  <script>
+    // Textos personalizados por arquivo (opcional). Arquivos novos recebem um texto genérico.
+    const INFO = {
+      'dashboard_abacus.html': { desc: 'Dashboard interativo de análise dos operadores (CUAD e BioDEX).', btn: 'Abrir dashboard' },
+      'masterfile (6).tar.gz': { desc: 'Arquivo compactado do Masterfile disponibilizado neste repositório.', btn: 'Baixar Masterfile' },
+      'runs-campanha-maxcost.zip': { desc: 'Arquivo compactado com os dados da campanha de runs.', btn: 'Baixar arquivo de runs' }
+    };
+    const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    const fmt = b => b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
+
+    // Lista os arquivos da raiz do repositório via API pública do GitHub (apenas quando publicado em *.github.io).
+    async function carregarArquivos(host, path) {
+      const repo = path.split('/')[1];
+      if (!host.endsWith('github.io') || !repo) return;           // localmente: mantém os cartões fixos
+      try {
+        const r = await fetch(`https://api.github.com/repos/${host.split('.')[0]}/${repo}/contents/`);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const lista = (await r.json())
+          .filter(f => f.type === 'file' && f.name !== 'index.html' && !f.name.startsWith('.') && !/^readme/i.test(f.name))
+          .sort((a, b) => (/\.html?$/i.test(b.name) - /\.html?$/i.test(a.name)) || a.name.localeCompare(b.name));
+        if (!lista.length) return;
+        document.getElementById('files').innerHTML = lista.map(f => {
+          const web = /\.html?$/i.test(f.name), info = INFO[f.name] || {};
+          const desc = info.desc || ('Arquivo disponibilizado neste repositório (' + fmt(f.size) + ').');
+          const btn = info.btn || (web ? 'Abrir página' : 'Baixar arquivo');
+          return `<article class="file"><h2>${esc(f.name)}</h2><p>${esc(desc)}</p>` +
+                 `<a class="button" href="./${encodeURIComponent(f.name)}"${web ? '' : ' download'}>${esc(btn)}</a></article>`;
+        }).join('');
+      } catch (e) { console.warn('Lista automática indisponível:', e.message); }
+    }
+    carregarArquivos(location.hostname, location.pathname);
+  </script>
 </body>
 </html>
