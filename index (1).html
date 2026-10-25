@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Repositório de arquivos do projeto ABACUS Masterfile.">
+  <title>ABACUS Masterfile</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #172033;
+      --muted: #5b6475;
+      --line: #e2e7ef;
+      --accent: #2457c5;
+      --background: #f5f7fb;
+      --card: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--background);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+    header {
+      padding: 56px 20px 42px;
+      background: #152746;
+      color: white;
+    }
+    .wrap { width: min(900px, calc(100% - 32px)); margin: 0 auto; }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: #c8d8ff;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.15; }
+    header p { max-width: 680px; color: #e0e8f7; margin: 18px 0 0; }
+    main { padding: 34px 0 54px; }
+    .intro { color: var(--muted); margin: 0 0 24px; }
+    .files { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .file {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: 0 5px 18px rgba(25, 42, 70, .04);
+    }
+    .file h2 { font-size: 1.15rem; margin: 0 0 8px; overflow-wrap: anywhere; }
+    .file p { color: var(--muted); font-size: .95rem; min-height: 48px; }
+    .button {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 10px 15px;
+      border-radius: 8px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: 650;
+    }
+    .button:hover { background: #1946a6; }
+    .note {
+      margin-top: 24px;
+      padding: 16px 18px;
+      border-left: 4px solid #9aa9c3;
+      background: #edf1f8;
+      border-radius: 8px;
+      color: #38445a;
+      font-size: .93rem;
+    }
+    footer { padding: 20px; border-top: 1px solid var(--line); color: var(--muted); font-size: .85rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">Projeto de pesquisa</p>
+      <h1>ABACUS Masterfile</h1>
+      <p>Central de acesso aos arquivos disponibilizados para o projeto. Selecione abaixo o material que deseja consultar.</p>
+    </div>
+  </header>
+  <main class="wrap">
+    <p class="intro">Arquivos disponíveis para visualização e download:</p>
+    <section class="files" aria-label="Arquivos do projeto">
+      <article class="file">
+        <h2>masterfile (6).tar.gz</h2>
+        <p>Arquivo compactado do Masterfile disponibilizado neste repositório.</p>
+        <a class="button" href="./masterfile%20(6).tar.gz" download>Baixar Masterfile</a>
+      </article>
+      <article class="file">
+        <h2>runs-campanha-maxcost.zip</h2>
+        <p>Arquivo compactado com os dados da campanha de runs.</p>
+        <a class="button" href="./runs-campanha-maxcost.zip" download>Baixar arquivo de runs</a>
+      </article>
+    </section>
+    <div class="note">
+      <strong>Observação:</strong> esta página e os arquivos vinculados ficam acessíveis publicamente. Compartilhe apenas materiais autorizados para divulgação.
+    </div>
+  </main>
+  <footer>ABACUS Masterfile</footer>
+</body>
+</html>
